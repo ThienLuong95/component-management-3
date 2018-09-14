@@ -4,6 +4,7 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import Vuetify from 'vuetify'
+import '@mdi/font/css/materialdesignicons.css'
 import 'vuetify/dist/vuetify.min.css'
 import 'codemirror/lib/codemirror.css'
 import VueCodemirror from 'vue-codemirror'
@@ -18,9 +19,11 @@ Vue.use(Vuetify, {
         success: '#4CAF50',
         warning: '#FFC107'
     }
-})
+});
 
-Vue.config.productionTip = false
+
+
+Vue.config.productionTip = false;
 
 /* eslint-disable no-new */
 var app=new Vue({
@@ -29,6 +32,6 @@ var app=new Vue({
     router,
     components: {App},
     template: '<App/>'
-})
+});
 
 // vue init vuetityjs/webpack project-name

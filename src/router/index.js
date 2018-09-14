@@ -5,11 +5,11 @@ import CmMainContent from '@/components/CmMainContent'
 Vue.use(Router)
 
 export default new Router({
-  routes: [
-    {
-      path: '/:componentName',
-      name: 'CmMainContent',
-      component: CmMainContent
-    }
-  ]
+    routes: [
+        {
+            path: '/component/:componentName',
+            name: 'component',
+            component: CmMainContent
+        },
+    ]
 })

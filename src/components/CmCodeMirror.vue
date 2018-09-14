@@ -1,49 +1,50 @@
 <template>
-    <codemirror
-            :value="code"
-            :options="cmOptions"
-            @ready="onCmReady"
-            @focus="onCmFocus"
-            @input="onCmCodeChange"
-    ></codemirror>
+    <v-card>
+        <v-card-actions>
+            <v-btn icon @click="dialog=!dialog">
+                <v-icon>settings</v-icon>
+            </v-btn>
+            <strong style="font-size: 1.2em; margin: 0px 4px">{{ title }}</strong>
+            <v-spacer></v-spacer>
+        </v-card-actions>
+        <v-divider></v-divider>
+        <codemirror
+                :value="value"
+                :options="codeMirrorOptions"
+                @input="onCmCodeChange"
+        ></codemirror>
+
+    </v-card>
+
 </template>
 
 <script>
-    import 'codemirror/mode/vue/vue.js'
-    // theme css
     import 'codemirror/theme/base16-dark.css'
-
+    import 'codemirror/mode/vue/vue.js'
+    import 'codemirror/mode/css/css.js'
+    import draggable from 'vuedraggable'
     export default {
         name: "cm-code-mirror",
+        components: {draggable},
         props: {
-            code: ''
+            title: '',
+            value: '',
+            codeMirrorOptions: null,
         },
-        data:function(){
-            return {
-                cmOptions: {
-                    mode: 'text/x-vue',
-                    tabSize: 4,
-                    theme: 'base16-dark',
-                    lineNumbers: true,
-                    line: true,
-                }
-            }
-        },
-        methods :{
-            onCmReady: function (cm) {
-                console.log("ready",cm)
-            },
-            onCmFocus: function (cm) {
-                console.log("focus", cm)
-            },
+
+        methods: {
             onCmCodeChange: function (code) {
-                console.log("codechange", code)
-                this.$emit('codeChange', code);
-            }
-        }
+                this.$emit('onCmCodeChange', code);
+            },
+
+
+        },
+
+
     }
 </script>
 
 <style scoped>
+
 
 </style>
