@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import CmMainContent from '@/components/CmMainContent'
+import CmMainContent from '@/components/cm-main-content'
 
 Vue.use(Router)
 

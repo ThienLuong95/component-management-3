@@ -10,11 +10,12 @@
 
 <script>
     export default {
-        name: "cm-view-component-demo",
+        name: "cm-view-component-panel",
         props: {
             componentTemplate: '',
             componentStyle: '',
             componentScript: '',
+            componentHeadText:'',
             listScriptAppend: Array,
             listLinkAppend: Array
         },
@@ -28,7 +29,7 @@
         },
         methods: {
             onRun(template, style, script) {
-                this.loadFrame(this.frameDoc, template, style, script);
+                this.loadFrame(this.frameDoc, this.componentHeadText, template, style, script);
             },
             loader(doc, tag, url, resolve, reject) {
                 let element = doc.createElement(tag);
@@ -93,8 +94,9 @@
                 }
                 doc[parent].appendChild(element);
             },
-            loadFrame(doc, template, style, script) {
+            loadFrame(doc, head, template, style, script) {
                 doc.write("<!DOCTYPE html><html><head></head><body></body></html>");
+                doc.head.innerHTML=head;
                 doc.body.innerHTML = template;
                 Promise.all(this.getListLinkAndScript()).then(() => {
                     this.loadCode(doc, 'head', 'style', style);
@@ -110,7 +112,7 @@
         mounted: function () {
             this.frame = document.getElementById('cmViewComponentDemo');
             this.frameDoc = this.frame.contentDocument || this.frame.contentWindow.document;
-            this.loadFrame(this.frameDoc, this.componentTemplate, this.componentStyle, this.componentScript);
+            this.loadFrame(this.frameDoc, this.componentHeadText, this.componentTemplate, this.componentStyle, this.componentScript);
             console.log('mounted')
         },
 

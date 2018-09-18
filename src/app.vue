@@ -1,24 +1,36 @@
 <template>
     <v-app>
-        <cm-navigation-drawer :projects="projects" ref="navToggle"></cm-navigation-drawer>
-        <cm-toolbar v-on:setDrawer="setDrawer"></cm-toolbar>
+        <cm-nav :projects="projects" ref="navToggle"></cm-nav>
+        <v-toolbar
+                app
+                dark
+                style="z-index: 998"
+                color="secondary"
+        >
+            <v-toolbar-side-icon @click="setDrawer"></v-toolbar-side-icon>
+            <v-toolbar-title > ComponentManagement</v-toolbar-title>
+        </v-toolbar>
+
         <v-content>
             <router-view></router-view>
         </v-content>
-        <cm-footer></cm-footer>
+
+        <v-footer app>
+            <v-card-text>
+                &copy;2018 — <strong>ATM</strong>
+            </v-card-text>
+        </v-footer>
     </v-app>
 </template>
 
 <script>
 
 
-    import CmNavigationDrawer  from "./components/CmNavigationDrawer";
-    import CmToolbar from "./components/CmToolbar";
-    import CmFooter from "./components/CmFooter";
+    import CmNav  from "./components/cm-nav";
 
     export default {
         name: 'app',
-        components: {CmFooter, CmToolbar, CmNavigationDrawer},
+        components: {CmNav},
         methods: {
             setDrawer: function () {
                this.$refs.navToggle.setDrawer()
@@ -26,6 +38,8 @@
         },
         data: function () {
             return {
+                selectedProject: null,
+                selectedComponent: null,
                 projects: [
                     {
                         projectName: 'Project 1',
@@ -53,3 +67,4 @@
 
     }
 </script>
+
