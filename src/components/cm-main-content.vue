@@ -3,27 +3,25 @@
 
         <v-layout row wrap>
             <v-flex xs12>
-                <h1 style="color: #2196F3; padding: 12px 0" class="display-1 font-weight-bold">
-                    {{ componentData.name}} </h1>
-                <p class="body-1">Component description</p>
+                <h1  class="display-1 font-weight-bold cm-title">{{ componentData.name}} </h1>
+                <p class="body-1" style="margin-bottom: 8px">Component description</p>
             </v-flex>
 
             <v-flex xs12 lg12>
-                <h2 id="localLinkUsage" class="headline" style="color: #2196F3; padding: 0 0 12px 0">Usage</h2>
+                <h2 id="localLinkUsage" class="headline cm-title" >Usage</h2>
                 <p class="body-1">You can change below code to make effect</p>
                 <v-card style="background-color: #BDBDBD">
-                    <v-card-actions style="background-color: #f5f5f5; color: #757575 ">
-                        <v-btn icon medium href="#localLinkUsage" style="color: #757575">
+                    <v-card-actions class="cm-action-bar">
+                        <v-btn icon medium href="#localLinkUsage" class="cm-icon-grey">
                             <v-icon medium>mdi-pound-box</v-icon>
                         </v-btn>
-                        <strong class="title" style="font-size: 1.4em; margin: 0px 4px; color: #757575">Demo</strong>
+                        <strong class="title" style="margin: 0px 4px;">Demo</strong>
                         <v-spacer></v-spacer>
 
                         <v-tooltip top>
-                            <v-btn slot="activator" icon medium @click="showCode" style="color: #757575">
+                            <v-btn slot="activator" icon medium @click="showCode" class="cm-icon-grey">
                                 <v-icon medium>code</v-icon>
                             </v-btn>
-
                             <span>View Source</span>
                         </v-tooltip>
 
@@ -53,7 +51,7 @@
 
             </v-flex>
             <v-flex xs12>
-                <h2 class="headline" style="color: #2196F3; padding: 12px 0">API</h2>
+                <h2 class="headline cm-title">API</h2>
                 <p>Component API</p>
             </v-flex>
         </v-layout>

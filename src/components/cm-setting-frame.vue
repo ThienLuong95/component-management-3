@@ -17,8 +17,8 @@
 
                 <v-tab-item id="tabHtml" class="tab-item">
 
-                        <div style="padding: 24px 0">
-                            <h2 class="headline"  style="color: #757575; padding-bottom: 8px">Stuff for tag head</h2>
+                        <div style="padding: 12px 0">
+                            <h2 class="headline cm-title">Stuff for tag head</h2>
 
                             <p class="body-1" >Any tag like:
                                 <span v-for="item in items" :key="item"><code style="margin-left: 8px"><{{item}}></code> ,</span>

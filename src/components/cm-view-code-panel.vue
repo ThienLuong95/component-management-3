@@ -1,13 +1,13 @@
 <template>
-    <v-layout row wrap style="padding: 12px 12px">
+    <v-layout row wrap style="padding: 12px">
         <v-flex xs12 lg4 v-for="(item, index) in cmItems" :key="index">
             <v-card>
-                <v-card-actions style="background-color: #EEEEEE">
-                    <v-btn icon @click="onSetting(item.name)" style="color: #757575">
+                <v-card-actions class="cm-action-bar">
+                    <v-btn icon @click="onSetting(item.name)" class="cm-icon-grey">
                         <v-icon>settings</v-icon>
                     </v-btn>
                     <strong class="subheading"
-                            style="font-size: 1.2em; margin: 0 4px; color: #757575">{{item.name}}</strong>
+                            style=" margin: 0 4px; ">{{item.name}}</strong>
                     <v-spacer></v-spacer>
                 </v-card-actions>
                 <codemirror

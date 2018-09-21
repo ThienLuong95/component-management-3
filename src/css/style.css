@@ -1,0 +1,14 @@
+.cm-title {
+    color: #2196F3;
+    padding: 12px 0;
+}
+.cm-title-bar{
+    color: #757575;
+}
+.cm-action-bar {
+    color: #757575;
+    background-color: #EEEEEE;
+}
+.cm-icon-grey{
+    color: #757575 !important;
+}

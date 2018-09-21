@@ -1,7 +1,7 @@
 <template>
     <div >
-        <div style="padding: 24px 0">
-            <h2 class="headline" style="color: #757575; padding-bottom: 8px">Add External {{type}}</h2>
+        <div style="padding: 12px 0">
+            <h2 class="headline cm-title" >Add External {{type}}</h2>
             <p class="body-1">Any URL's added here will be added as tag <code> <{{getTag}}></code> in order, and before the {{type}} in the editor</p>
         </div>
         <draggable v-model="tempUrls" :options="{group: type}" @start="drag=true" @end="drag=false">
@@ -11,7 +11,7 @@
                         outline
                         single-line
                         placeholder="https://www.cdn.com/abc/zc"
-                        :value="element"
+                        v-model="tempUrls[index]"
                         clearable
                         type="url"
                         prepend-icon="mdi-arrow-all"
@@ -49,6 +49,7 @@
         props: {
             type: '',
             urls: null,
+
         },
         data: function () {
             return {
@@ -78,7 +79,8 @@
                     this.tempUrls.splice(index, 1);
                 }
             },
-        }
+        },
+
     }
 </script>
 <style scoped>

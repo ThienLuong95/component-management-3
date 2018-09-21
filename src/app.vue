@@ -24,8 +24,6 @@
 </template>
 
 <script>
-
-
     import CmNav  from "./components/cm-nav";
 
     export default {
@@ -127,8 +125,6 @@
                                     "https://cdn.jsdelivr.net/npm/vue/dist/vue.js",
                                     "https://cdn.jsdelivr.net/npm/vuetify/dist/vuetify.js"],
                             },
-
-
                         ]},
                     {
                         projectName: 'Project 2',
@@ -136,7 +132,6 @@
                         listComponents: [
                         ]},
                 ],
-
             }
         }
 

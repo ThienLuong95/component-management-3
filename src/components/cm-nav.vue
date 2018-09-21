@@ -15,6 +15,7 @@
                 v-on:change="onProjectSelection"
                 style="padding: 24px 16px 0 16px"
                 outline
+
         ></v-select>
 
         <!--Search box search component-->
