@@ -12,24 +12,17 @@
     export default {
         name: "cm-view-component-panel",
         props: {
-            componentTemplate: '',
-            componentStyle: '',
-            componentScript: '',
-            componentHeadText:'',
-            listScriptAppend: Array,
-            listLinkAppend: Array
+            componentData: Object,
         },
         data: function () {
             return {
                 frame: null,
                 frameDoc: null,
-                scriptElement: null,
-                styleElement: null,
             }
         },
         methods: {
             onRun(template, style, script) {
-                this.loadFrame(this.frameDoc, this.componentHeadText, template, style, script);
+                this.loadFrame(this.frameDoc, this.componentData.headText, template, style, script);
             },
             loader(doc, tag, url, resolve, reject) {
                 let element = doc.createElement(tag);
@@ -70,11 +63,11 @@
             },
             getListLinkAndScript() {
                 let arr = [];
-                for (let scr of this.listScriptAppend) {
+                for (let scr of this.componentData.scripts) {
                     let temp = this.loadJs(scr);
                     arr.push(temp);
                 }
-                for (let link of this.listLinkAppend) {
+                for (let link of this.componentData.links) {
                     let temp = this.loadCss(link);
                     arr.push(temp);
                 }
@@ -94,6 +87,7 @@
                 }
                 doc[parent].appendChild(element);
             },
+
             loadFrame(doc, head, template, style, script) {
                 doc.write("<!DOCTYPE html><html><head></head><body></body></html>");
                 doc.head.innerHTML=head;
@@ -107,15 +101,21 @@
                     console.log('reject')
                 });
 
-            }
+            },
+
         },
         mounted: function () {
             this.frame = document.getElementById('cmViewComponentDemo');
             this.frameDoc = this.frame.contentDocument || this.frame.contentWindow.document;
-            this.loadFrame(this.frameDoc, this.componentHeadText, this.componentTemplate, this.componentStyle, this.componentScript);
-            console.log('mounted')
+            this.loadFrame(this.frameDoc, this.componentData.headText,
+                this.componentData.template, this.componentData.style, this.componentData.script);
         },
-
+        watch: {
+            componentData: function () {
+                this.loadFrame(this.frameDoc, this.componentData.headText,
+                    this.componentData.template, this.componentData.style, this.componentData.script);
+            }
+        }
     }
 </script>
 

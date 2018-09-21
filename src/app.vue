@@ -1,6 +1,6 @@
 <template>
     <v-app>
-        <cm-nav :projects="projects" ref="navToggle"></cm-nav>
+        <cm-nav :projects="projects" ref="navToggle" ></cm-nav>
         <v-toolbar
                 app
                 dark
@@ -34,33 +34,106 @@
         methods: {
             setDrawer: function () {
                this.$refs.navToggle.setDrawer()
-            }
+            },
         },
+
         data: function () {
             return {
-                selectedProject: null,
-                selectedComponent: null,
                 projects: [
                     {
                         projectName: 'Project 1',
+                        projectId:'pj2',
                         listComponents: [
-                            {componentName: 'Project 1 Component 1'},
-                            {componentName: 'Project 1 Component 2'},
-                            {componentName: 'Project 1 Component 3'},
-                            {componentName: 'Project 1 Component 4'},
-                            {componentName: 'Project 1 Component 5'},
+                            {
+                                id: 'cmp0',
+                                name: 'Project 1 Component 0',
+                                template:'<div id="demo">\n' +
+                                    '  <v-app id="inspire">\n' +
+                                    '    <div>\n' +
+                                    '      <v-btn color="success">Success</v-btn>\n' +
+                                    '      <v-btn color="error">Error</v-btn>\n' +
+                                    '    </div>\n' +
+                                    '  </v-app>\n' +
+                                    '</div>',
+                                script:'new Vue({ el: \'#demo\'})',
+                                style:'.red{background-color: red}',
+                                headText:"<meta charset=\"utf-8\">\n" +
+                                    "    <meta name=\"viewport\" content=\"width=device-width,initial-scale=1.0\">",
+                                links:['https://cdn.jsdelivr.net/npm/vuetify/dist/vuetify.min.css',],
+                                scripts:[
+                                    "https://cdn.jsdelivr.net/npm/vue/dist/vue.js",
+                                    "https://cdn.jsdelivr.net/npm/vuetify/dist/vuetify.js"],
+                            },{
+                                id: 'cmp1',
+                                name: 'Project 1 Component 1',
+                                template:'<div id="demo">\n' +
+                                    '  <v-app id="inspire">\n' +
+                                    '    <div>\n' +
+                                    '      <v-btn color="success">Success</v-btn>\n' +
+                                    '      <v-btn color="error">Error</v-btn>\n' +
+                                    '      <v-btn color="info">Info</v-btn>\n' +
+                                    '    </div>\n' +
+                                    '  </v-app>\n' +
+                                    '</div>',
+                                script:'new Vue({ el: \'#demo\'})',
+                                style:'.red{background-color: red}',
+                                headText:"<meta charset=\"utf-8\">\n" +
+                                    "    <meta name=\"viewport\" content=\"width=device-width,initial-scale=1.0\">",
+                                links:['https://cdn.jsdelivr.net/npm/vuetify/dist/vuetify.min.css',],
+                                scripts:[
+                                    "https://cdn.jsdelivr.net/npm/vue/dist/vue.js",
+                                    "https://cdn.jsdelivr.net/npm/vuetify/dist/vuetify.js"],
+                            },{
+                                id: 'cmp2',
+                                name: 'Project 1 Component 2',
+                                template:'<div id="demo">\n' +
+                                    '  <v-app id="inspire">\n' +
+                                    '    <div>\n' +
+                                    '      <v-btn color="error">Error</v-btn>\n' +
+                                    '      <v-btn color="warning">Warning</v-btn>\n' +
+                                    '      <v-btn color="info">Info</v-btn>\n' +
+                                    '    </div>\n' +
+                                    '  </v-app>\n' +
+                                    '</div>',
+                                script:'new Vue({ el: \'#demo\'})',
+                                style:'.red{background-color: red}',
+                                headText:"<meta charset=\"utf-8\">\n" +
+                                    "    <meta name=\"viewport\" content=\"width=device-width,initial-scale=1.0\">",
+                                links:['https://cdn.jsdelivr.net/npm/vuetify/dist/vuetify.min.css',],
+                                scripts:[
+                                    "https://cdn.jsdelivr.net/npm/vue/dist/vue.js",
+                                    "https://cdn.jsdelivr.net/npm/vuetify/dist/vuetify.js"],
+                            },{
+                                id: 'cmp3',
+                                name: 'Project 1 Component 3',
+                                template:'<div id="demo">\n' +
+                                    '  <v-app id="inspire">\n' +
+                                    '    <div>\n' +
+                                    '      <v-btn color="success">Success</v-btn>\n' +
+                                    '      <v-btn color="error">Error</v-btn>\n' +
+                                    '      <v-btn color="warning">Warning</v-btn>\n' +
+                                    '    </div>\n' +
+                                    '  </v-app>\n' +
+                                    '</div>',
+                                script:'new Vue({ el: \'#demo\'})',
+                                style:'.red{background-color: red}',
+                                headText:"<meta charset=\"utf-8\">\n" +
+                                    "    <meta name=\"viewport\" content=\"width=device-width,initial-scale=1.0\">",
+                                links:['https://cdn.jsdelivr.net/npm/vuetify/dist/vuetify.min.css',],
+                                scripts:[
+                                    "https://cdn.jsdelivr.net/npm/vue/dist/vue.js",
+                                    "https://cdn.jsdelivr.net/npm/vuetify/dist/vuetify.js"],
+                            },
+
+
                         ]},
                     {
                         projectName: 'Project 2',
+                        projectId:'pj2',
                         listComponents: [
-                            {componentName: 'Project 2 Component 1'},
-                            {componentName: 'Project 2 Component 2'},
-                            {componentName: 'Project 2 Component 3'},
-                            {componentName: 'Project 2 Component 4'},
-                            {componentName: 'Project 2 Component 5'},
                         ]},
-
                 ],
+
             }
         }
 

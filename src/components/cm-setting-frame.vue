@@ -18,12 +18,15 @@
                 <v-tab-item id="tabHtml" class="tab-item">
 
                         <div style="padding: 24px 0">
-                            <h2 class="headline" style="color: #757575">Stuff for tag head</h2>
-                            <p class="body-1">Any tag meta, link, style, script... will be add in tag head </p>
+                            <h2 class="headline"  style="color: #757575; padding-bottom: 8px">Stuff for tag head</h2>
+
+                            <p class="body-1" >Any tag like:
+                                <span v-for="item in items" :key="item"><code style="margin-left: 8px"><{{item}}></code> ,</span>
+                                ... will be added in tag <code style="margin: 8px 0"><{{headItem}}></code> </p>
                         </div>
                         <v-textarea
                                 v-model="textArea"
-                                placeholder="meta, link, style, script..."
+                                placeholder="<code> <meta>, <link>, <style>, <script>... </code>"
                                 outline
                                 clearable
                                 auto-grow
@@ -61,6 +64,8 @@
                 dialog: false,
                 activeTab: 'tabHtml',
                 textArea: '',
+                items: ['meta', 'link', 'script', 'style'],
+                headItem:'head'
             }
 
         },

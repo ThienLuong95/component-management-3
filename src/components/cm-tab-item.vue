@@ -1,8 +1,8 @@
 <template>
     <div >
         <div style="padding: 24px 0">
-            <h2 class="headline" style="color: #757575">Add External {{type}}</h2>
-            <p class="body-1">Any URL's added here will be added as tag {{getTag}} in order, and before the {{type}} in the editor</p>
+            <h2 class="headline" style="color: #757575; padding-bottom: 8px">Add External {{type}}</h2>
+            <p class="body-1">Any URL's added here will be added as tag <code> <{{getTag}}></code> in order, and before the {{type}} in the editor</p>
         </div>
         <draggable v-model="tempUrls" :options="{group: type}" @start="drag=true" @end="drag=false">
             <div style="display: flex" v-for="(element, index) in tempUrls" :key="index">

@@ -1,12 +1,13 @@
 <template>
-    <v-layout row wrap  style="padding: 12px 12px">
+    <v-layout row wrap style="padding: 12px 12px">
         <v-flex xs12 lg4 v-for="(item, index) in cmItems" :key="index">
             <v-card>
                 <v-card-actions style="background-color: #EEEEEE">
                     <v-btn icon @click="onSetting(item.name)" style="color: #757575">
                         <v-icon>settings</v-icon>
                     </v-btn>
-                    <strong class="subheading" style="font-size: 1.2em; margin: 0 4px; color: #757575">{{item.name}}</strong>
+                    <strong class="subheading"
+                            style="font-size: 1.2em; margin: 0 4px; color: #757575">{{item.name}}</strong>
                     <v-spacer></v-spacer>
                 </v-card-actions>
                 <codemirror
@@ -22,9 +23,9 @@
             </v-btn>
         </v-card-actions>
         <cm-setting-frame
-                :component-head-text="componentHeadText"
-                :list-link-append="listLinkAppend"
-                :list-script-append="listScriptAppend"
+                :component-head-text="getHeadText"
+                :list-link-append="getLinks"
+                :list-script-append="getScripts"
                 ref="cmComponentSetting"
                 @onSaveSetting="onSaveSetting"
         ></cm-setting-frame>
@@ -42,12 +43,7 @@
         name: "cm-view-code-panel",
         components: {CmSettingFrame},
         props: {
-            componentTemplate: '',
-            componentStyle: '',
-            componentScript: '',
-            componentHeadText:'',
-            listScriptAppend: Array,
-            listLinkAppend: Array,
+            componentData: Object,
         },
         data: function () {
             return {
@@ -82,26 +78,47 @@
                 }
             },
             onRun() {
-                let html= this.cmItems[0].value;
-                let style= this.cmItems[1].value;
-                let script= this.cmItems[2].value;
+                let html = this.cmItems[0].value;
+                let style = this.cmItems[1].value;
+                let script = this.cmItems[2].value;
                 this.$emit('onRun', html, style, script);
             },
             onSetting(name) {
                 this.$refs.cmComponentSetting.setActiveTab(name);
                 this.$refs.cmComponentSetting.setDialog();
             },
-            onSaveSetting(headText, links, scripts){
+            onSaveSetting(headText, links, scripts) {
                 this.$emit('onSaveSetting', headText, links, scripts);
-
+            }
+        },
+        computed: {
+            getLinks: function () {
+                return this.componentData.links;
+            },
+            getScripts: function () {
+                return this.componentData.scripts;
+            },
+            getHeadText: function () {
+                return this.componentData.headText;
+            },
+            // getData: function () {
+            //     this.cmItems[0].value = this.componentData.template;
+            //     this.cmItems[1].value = this.componentData.style;
+            //     this.cmItems[2].value = this.componentData.script;
+            // }
+        },
+        watch: {
+            componentData: function () {
+                this.cmItems[0].value = this.componentData.template;
+                this.cmItems[1].value = this.componentData.style;
+                this.cmItems[2].value = this.componentData.script;
             }
         },
         created: function () {
-            this.cmItems[0].value = this.componentTemplate;
-            this.cmItems[1].value = this.componentStyle;
-            this.cmItems[2].value = this.componentScript;
+            this.cmItems[0].value = this.componentData.template;
+            this.cmItems[1].value = this.componentData.style;
+            this.cmItems[2].value = this.componentData.script;
         },
-
     }
 </script>
 

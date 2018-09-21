@@ -1,9 +1,10 @@
 <template>
-    <v-container grid-list-lg >
-        <v-layout row wrap>
+    <v-container grid-list-lg>
 
+            <v-layout row wrap>
             <v-flex xs12>
-                <h1 style="color: #2196F3; padding: 12px 0" class="display-1 font-weight-bold">{{ $route.params.componentName}}</h1>
+                <h1 style="color: #2196F3; padding: 12px 0" class="display-1 font-weight-bold">
+                 {{ this.$route.params.id}}   </h1>
                 <p class="body-1">Component description</p>
             </v-flex>
 
@@ -33,27 +34,18 @@
                     <v-slide-y-transition>
                         <cm-view-code-panel
                                 v-if="isShowCode"
-                                :component-template="componentTemplate"
-                                :component-script="componentScript"
-                                :component-style="componentStyle"
-                                :component-head-text="componentHeadText"
-                                :list-script-append="listScriptAppend"
-                                :list-link-append="listLinkAppend"
+                                :component-data="componentData"
                                 @onRun="onRun"
                                 @onSaveSetting="onSaveSetting"
+                                ref="cmViewCodePanel"
                         ></cm-view-code-panel>
                     </v-slide-y-transition>
 
                     <v-divider></v-divider>
 
                     <cm-view-component-panel
-                            ref="cmViewComponentDemo"
-                            :component-template="componentTemplate"
-                            :component-script="componentScript"
-                            :component-style="componentStyle"
-                            :component-head-text="componentHeadText"
-                            :list-script-append="listScriptAppend"
-                            :list-link-append="listLinkAppend"
+                            ref="cmViewComponentPanel"
+                            :component-data="componentData"
                     ></cm-view-component-panel>
                     <v-divider></v-divider>
                     <v-card-title></v-card-title>
@@ -77,50 +69,29 @@
     export default {
         name: "cm-main-content",
         components: {CmViewCodePanel, CmComponentSetting, CmViewComponentPanel},
-        props:{
-          selectedComponent: null,
+        props: {
+          listComponent: [],
         },
         data: function () {
             return {
-                componentTemplate: "<div id=\"demo\">\n" +
-                    "  <v-app id=\"inspire\">\n" +
-                    "    <div>\n" +
-                    "      <v-btn color=\"success\">Success</v-btn>\n" +
-                    "      <v-btn color=\"error\">Error</v-btn>\n" +
-                    "      <v-btn color=\"warning\">Warning</v-btn>\n" +
-                    "      <v-btn color=\"info\">Info</v-btn>\n" +
-                    "    </div>\n" +
-                    "  </v-app>\n" +
-                    "</div>",
-                componentScript: 'new Vue({ el: \'#demo\'})',
-                componentStyle: '.red{background-color: red}',
-
-                //Project config===========================
-                componentHeadText:"<meta charset=\"utf-8\">\n" +
-                    "    <meta name=\"viewport\" content=\"width=device-width,initial-scale=1.0\">",
-                listScriptAppend: [
-                    "https://cdn.jsdelivr.net/npm/vue/dist/vue.js",
-                    "https://cdn.jsdelivr.net/npm/vuetify/dist/vuetify.js"],
-                listLinkAppend: ['https://cdn.jsdelivr.net/npm/vuetify/dist/vuetify.min.css',],
                 isShowCode: false,
+                componentData: this.$route.params.data ,
             }
         },
         methods: {
             onRun(template, style, script) {
-                this.componentTemplate= template;
-                this.componentStyle= style;
-                this.componentScript= script;
-                this.$refs.cmViewComponentDemo.onRun(template, style, script);
+                this.$refs.cmViewComponentPanel.onRun(template, style, script);
             },
             showCode: function () {
                 this.isShowCode = !this.isShowCode
             },
-            onSaveSetting(headText, links, scripts){
-                this.componentHeadText= headText;
-                this.listLinkAppend=links;
-                this.listScriptAppend= scripts;
-                console.log('OnSave setting');
+            onSaveSetting(headText, links, scripts) {
                 console.log(headText, links, scripts)
+            }
+        },
+        watch:{
+            '$route' (to, from) {
+                this.componentData= this.$route.params.data;
             }
         },
     }

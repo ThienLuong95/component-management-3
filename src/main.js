@@ -34,4 +34,13 @@ var app=new Vue({
     template: '<App/>'
 });
 
-// vue init vuetityjs/webpack project-name
+var currentComponents=[];
+function getCurrentComponent(id) {
+    for(component of currentComponents){
+        if(component.id ===id ){
+            return component;
+        }
+    }
+    return null;
+}
+
