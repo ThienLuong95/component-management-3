@@ -32,16 +32,16 @@
 
         <!--Show list Component after search, default return all list-->
         <v-list>
-                <v-list-tile
-                        v-for="(item) in listResult"
-                        :key="item.id"
-                        :to="{ name: 'component', params: { id: item.id, data: item }}"
-                        active-class="primary--text"
-                >
-                    <v-list-tile-content  style="padding: 0 8px">
-                        <v-list-tile-title class="subheading">{{item.name}}</v-list-tile-title>
-                    </v-list-tile-content>
-                </v-list-tile>
+            <v-list-tile
+                    v-for="(item) in listResult"
+                    :key="item.id"
+                    :to="{ name: 'component', params: { id: item.id, data: item }}"
+                    active-class="primary--text"
+            >
+                <v-list-tile-content style="padding: 0 8px">
+                    <v-list-tile-title class="subheading">{{item.name}}</v-list-tile-title>
+                </v-list-tile-content>
+            </v-list-tile>
         </v-list>
 
     </v-navigation-drawer>
@@ -70,8 +70,7 @@
                 if (key === '') {
                     return this.listResult = this.selectedProject.listComponents
                 }
-                this.listResult = this.selectedProject.listComp
-                onents.filter(function (component) {
+                this.listResult = this.selectedProject.listComponents.filter(function (component) {
                     let titleLowerCase = component.name.toLowerCase();
                     let keyLowerCase = key.toLowerCase();
                     return titleLowerCase.indexOf(keyLowerCase) > -1
@@ -80,12 +79,21 @@
             onProjectSelection() {
                 this.keyword = '';
                 this.onSearch(this.keyword);
+                localStorage.selectedProjectId= this.selectedProject.id;
+                console.log(localStorage.selectedProjectId)
             },
         },
         created: function () {
             if (this.projects != null && this.projects.length >= 1) {
                 this.selectedProject = this.projects[0];
                 this.onSearch(this.keyword);
+                if (typeof(Storage) !== "undefined") {
+                    if (localStorage.selectedProjectId === 'null' || localStorage.selectedProjectId === 'undefined' || localStorage.selectedProjectId === '') {
+                        localStorage.setItem("selectedProjectId", this.selectedProject.id);
+                    }
+                } else {
+                    console.log('local storage not support')
+                }
             }
         }
     }

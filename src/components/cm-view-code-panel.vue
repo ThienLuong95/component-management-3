@@ -93,12 +93,15 @@
         },
         computed: {
             getLinks: function () {
+                if(this.componentData==null || this.componentData === 'undefined') return '';
                 return this.componentData.links;
             },
             getScripts: function () {
+                if(this.componentData==null || this.componentData === 'undefined') return '';
                 return this.componentData.scripts;
             },
             getHeadText: function () {
+                if(this.componentData==null || this.componentData === 'undefined') return '';
                 return this.componentData.headText;
             },
             // getData: function () {

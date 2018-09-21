@@ -107,8 +107,11 @@
         mounted: function () {
             this.frame = document.getElementById('cmViewComponentDemo');
             this.frameDoc = this.frame.contentDocument || this.frame.contentWindow.document;
-            this.loadFrame(this.frameDoc, this.componentData.headText,
-                this.componentData.template, this.componentData.style, this.componentData.script);
+            if(this.componentData !=null && this.componentData !=='undefined'){
+                this.loadFrame(this.frameDoc, this.componentData.headText,
+                    this.componentData.template, this.componentData.style, this.componentData.script);
+            }
+
         },
         watch: {
             componentData: function () {
