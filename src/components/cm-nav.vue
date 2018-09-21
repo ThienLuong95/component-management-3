@@ -37,6 +37,7 @@
                     :key="item.id"
                     :to="{ name: 'component', params: { id: item.id, data: item }}"
                     active-class="primary--text"
+                    @click="onComponentSelected"
             >
                 <v-list-tile-content style="padding: 0 8px">
                     <v-list-tile-title class="subheading">{{item.name}}</v-list-tile-title>
@@ -79,21 +80,27 @@
             onProjectSelection() {
                 this.keyword = '';
                 this.onSearch(this.keyword);
-                localStorage.selectedProjectId= this.selectedProject.id;
-                console.log(localStorage.selectedProjectId)
             },
+            onComponentSelected() {
+                localStorage.selectedProjectId = this.selectedProject.projectId;
+            }
         },
         created: function () {
             if (this.projects != null && this.projects.length >= 1) {
                 this.selectedProject = this.projects[0];
                 this.onSearch(this.keyword);
+
                 if (typeof(Storage) !== "undefined") {
-                    if (localStorage.selectedProjectId === 'null' || localStorage.selectedProjectId === 'undefined' || localStorage.selectedProjectId === '') {
-                        localStorage.setItem("selectedProjectId", this.selectedProject.id);
+                    if (localStorage.selectedProjectId === 'null' ||
+                        localStorage.selectedProjectId === 'undefined' ||
+                        localStorage.selectedProjectId === '') {
+
+                        localStorage.setItem("selectedProjectId", this.selectedProject.projectId);
                     }
                 } else {
                     console.log('local storage not support')
                 }
+
             }
         }
     }

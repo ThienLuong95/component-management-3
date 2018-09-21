@@ -1,10 +1,10 @@
 <template>
     <v-container grid-list-lg>
 
-            <v-layout row wrap>
+        <v-layout row wrap>
             <v-flex xs12>
                 <h1 style="color: #2196F3; padding: 12px 0" class="display-1 font-weight-bold">
-                 {{ this.$route.params.id}}   </h1>
+                    {{ componentData.name}} </h1>
                 <p class="body-1">Component description</p>
             </v-flex>
 
@@ -70,12 +70,12 @@
         name: "cm-main-content",
         components: {CmViewCodePanel, CmComponentSetting, CmViewComponentPanel},
         props: {
-          listComponent: [],
+            projects: [],
         },
         data: function () {
             return {
                 isShowCode: false,
-                componentData: this.$route.params.data ,
+                componentData: null,
             }
         },
         methods: {
@@ -89,11 +89,25 @@
                 console.log(headText, links, scripts)
             }
         },
-        watch:{
-            '$route' (to, from) {
-                this.componentData= this.$route.params.data;
+        watch: {
+            '$route'(to, from) {
+                this.componentData = this.$route.params.data;
             }
         },
+        created: function () {
+            let routeData = this.$route.params.data;
+            if (routeData == null || routeData === 'undefined') {
+                let project= this.$store.getters.getProjectById(localStorage.selectedProjectId);
+                for (let component of project.listComponents){
+                    if(component.id === this.$route.params.id){
+                        this.componentData= component;
+                        return;
+                    }
+                }
+            }else {
+                this.componentData= routeData;
+            }
+        }
     }
 </script>
 

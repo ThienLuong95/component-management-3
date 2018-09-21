@@ -4,11 +4,41 @@ import Vue from 'vue'
 import App from './app'
 import router from './router'
 import Vuetify from 'vuetify'
+import Vuex from 'vuex'
+
 import '@mdi/font/css/materialdesignicons.css'
 import 'vuetify/dist/vuetify.min.css'
 import 'codemirror/lib/codemirror.css'
 import VueCodemirror from 'vue-codemirror'
-Vue.use(VueCodemirror)
+
+Vue.config.productionTip = false;
+
+Vue.use(Vuex);
+
+const store = new Vuex.Store({
+    state: {
+        projects: [],
+    },
+    getters: {
+        getProjectById: (state) => (id) => {
+            for (let project of state.projects) {
+                if (project.projectId === id) {
+                    return project;
+                }
+            }
+            return null;
+        },
+    },
+    mutations: {
+        setProjects(state, projects) {
+            state.projects = projects;
+            console.log(state.projects)
+        }
+    }
+
+});
+Vue.use(VueCodemirror);
+
 Vue.use(Vuetify, {
     theme: {
         primary: '#2196F3',
@@ -20,27 +50,13 @@ Vue.use(Vuetify, {
         warning: '#FFC107'
     }
 });
-
-
-
-Vue.config.productionTip = false;
-
 /* eslint-disable no-new */
-var app=new Vue({
+var app = new Vue({
     el: '#app',
     name: 'root',
     router,
+    store,
     components: {App},
     template: '<App/>'
 });
-
-var currentComponents=[];
-function getCurrentComponent(id) {
-    for(component of currentComponents){
-        if(component.id ===id ){
-            return component;
-        }
-    }
-    return null;
-}
 

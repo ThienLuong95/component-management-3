@@ -31,6 +31,9 @@
     export default {
         name: 'app',
         components: {CmNav},
+        created: function(){
+            this.$store.commit('setProjects', this.projects)
+        },
         methods: {
             setDrawer: function () {
                this.$refs.navToggle.setDrawer()
@@ -42,7 +45,7 @@
                 projects: [
                     {
                         projectName: 'Project 1',
-                        projectId:'pj2',
+                        projectId:'pj1',
                         listComponents: [
                             {
                                 id: 'cmp0',
