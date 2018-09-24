@@ -39,7 +39,6 @@ const store = new Vuex.Store({
 
 });
 Vue.use(VueCodemirror);
-
 Vue.use(Vuetify, {
     theme: {
         primary: '#2196F3',
@@ -51,7 +50,7 @@ Vue.use(Vuetify, {
         warning: '#FFC107'
     }
 });
-/* eslint-disable no-new */
+
 var app = new Vue({
     el: '#app',
     name: 'root',
@@ -60,4 +59,5 @@ var app = new Vue({
     components: {App},
     template: '<App/>'
 });
+
 
