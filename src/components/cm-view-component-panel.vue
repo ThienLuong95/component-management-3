@@ -5,6 +5,7 @@
             width="100%"
             scrolling="no"
             frameborder="no"
+            src="http://localhost:8080"
     ></iframe>
 </template>
 
@@ -31,8 +32,10 @@
                 element.addEventListener('load', () => {
                     resolve(url);
                 });
-                element.addEventListener('error', () => {
+                element.addEventListener('error', (message) => {
                     reject(url);
+                    console.log('---------reject URL-----')
+                    console.log(message)
                 });
                 switch (tag) {
                     case 'script':
@@ -92,6 +95,8 @@
                 doc.write("<!DOCTYPE html><html><head></head><body></body></html>");
                 doc.head.innerHTML=head;
                 doc.body.innerHTML = template;
+                var reRunExternalScript = 'exportDemoFunction(window); \n';
+                script = reRunExternalScript + script;
                 Promise.all(this.getListLinkAndScript()).then(() => {
                     this.loadCode(doc, 'head', 'style', style);
                     this.loadCode(doc, 'body', 'script', script);
@@ -100,7 +105,6 @@
                 }).catch(function () {
                     console.log('reject')
                 });
-
             },
 
         },
@@ -124,8 +128,8 @@
 
 <style scoped>
     #cmViewComponentDemo {
-        margin: 24px 0px;
-        padding: 0px 12px;
+        margin: 24px 0;
+        padding: 0 12px;
     }
 </style>
 

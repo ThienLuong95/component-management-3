@@ -15,7 +15,6 @@ import VueCodemirror from 'vue-codemirror'
 Vue.config.productionTip = false;
 
 Vue.use(Vuex);
-
 const store = new Vuex.Store({
     state: {
         projects: [],
@@ -35,9 +34,11 @@ const store = new Vuex.Store({
             state.projects = projects;
             console.log(state.projects)
         }
-    }
+    },
+    actions:{}
 
 });
+
 Vue.use(VueCodemirror);
 Vue.use(Vuetify, {
     theme: {

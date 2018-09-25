@@ -104,11 +104,7 @@
                 if(this.componentData==null || this.componentData === 'undefined') return '';
                 return this.componentData.headText;
             },
-            // getData: function () {
-            //     this.cmItems[0].value = this.componentData.template;
-            //     this.cmItems[1].value = this.componentData.style;
-            //     this.cmItems[2].value = this.componentData.script;
-            // }
+
         },
         watch: {
             componentData: function () {
