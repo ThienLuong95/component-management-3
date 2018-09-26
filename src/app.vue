@@ -43,7 +43,7 @@
             return {
                 projects: [
                     {
-                        projectName: 'Project 1',
+                        projectName: 'Nokia Open Eco System',
                         projectId: 'pj1',
                         listComponents: [
                             {
@@ -60,7 +60,7 @@
                                     "     }\n" +
                                     "   }\n" +
                                     " });",
-                                style: '.red{background-color: red}',
+                                style: '#demo {padding : 20px}',
                                 headText: "<meta charset=\"utf-8\">\n" +
                                     "    <meta name=\"viewport\" content=\"width=device-width,initial-scale=1.0\">",
                                 links: [],
@@ -83,7 +83,7 @@
                                     "     }\n" +
                                     "   }\n" +
                                     " });",
-                                style: '.red{background-color: red}',
+                                style: '#demo {padding : 20px}',
                                 headText: "<meta charset=\"utf-8\">\n" +
                                     "    <meta name=\"viewport\" content=\"width=device-width,initial-scale=1.0\">",
                                 links: [],
@@ -106,7 +106,7 @@
                                     "     }\n" +
                                     "   }\n" +
                                     " });",
-                                style: '.red{background-color: red}',
+                                style: '#demo {padding : 20px}',
                                 headText: "<meta charset=\"utf-8\">\n" +
                                     "    <meta name=\"viewport\" content=\"width=device-width,initial-scale=1.0\">",
                                 links: [],
@@ -131,7 +131,204 @@
                                     " });",
                                 style: '.red{background-color: red}',
                                 headText: "<meta charset=\"utf-8\">\n" +
+                                    "<meta name=\"viewport\" content=\"width=device-width,initial-scale=1.0\">",
+                                links: [],
+                                scripts: [
+                                    "http://localhost:9090/open.js",
+                                ],
+                            },
+                            {
+                                id: 'cmp4',
+                                name: 'Nokia Socials',
+                                template: "<div id=\"demo\">\n" +
+                                    "<nokia-socials></nokia-socials>\n" +
+                                    "</div>",
+                                script: "new Vue({\n" +
+                                    "   el:'#demo',\n" +
+                                    " });",
+                                style: '#demo {padding : 20px}',
+                                headText: "<meta charset=\"utf-8\">\n" +
                                     "    <meta name=\"viewport\" content=\"width=device-width,initial-scale=1.0\">",
+                                links: [],
+                                scripts: [
+                                    "http://localhost:9090/open.js",
+                                ],
+                            },
+                            {
+                                id: 'cmp5',
+                                name: 'Nokia Pagination',
+                                template: "<div id=\"demo\">\n" +
+                                    "<nokia-pagination :item-per-page-modes=\"itemPerPageModes\" \n" +
+                                    " :item-selected=\"itemSelected\" \n" +
+                                    " :total-page=\"totalPage\" \n" +
+                                    " :current-page=\"currentPage\" \n" +
+                                    "></nokia-pagination>\n" +
+                                    "</div>",
+                                script: "new Vue({\n" +
+                                    "   el:'#demo',\n" +
+                                    "   data: function () {\n" +
+                                    "     return {\n" +
+                                    "       itemPerPageModes:[]\, \n " +
+                                    "       itemSelected:'Adudu'\, \n" +
+                                    "       totalPage:10\, \n " +
+                                    "       currentPage:5\, \n" +
+                                    "     }\n" +
+                                    "   }\n" +
+                                    " });",
+                                style: '#demo {padding : 20px}',
+                                headText: "<meta charset=\"utf-8\">\n" +
+                                    "    <meta name=\"viewport\" content=\"width=device-width,initial-scale=1.0\">",
+                                links: [],
+                                scripts: [
+                                    "http://localhost:9090/open.js",
+                                ],
+                            },
+
+                            {
+                                id: 'cmp6',
+                                name: 'Nokia Select',
+                                template: "<div id=\"demo\">\n" +
+                                    "<nokia-select></nokia-select>\n" +
+                                    "</div>",
+                                script: "new Vue({\n" +
+                                    "   el:'#demo',\n" +
+                                    " });",
+                                style: '#demo {padding : 20px}',
+                                headText: "<meta charset=\"utf-8\">\n" +
+                                    "    <meta name=\"viewport\" content=\"width=device-width,initial-scale=1.0\">",
+                                links: [],
+                                scripts: [
+                                    "http://localhost:9090/open.js",
+                                ],
+                            },
+                            {
+                                id: 'cmp7',
+                                name: 'Nokia Navigation',
+                                template: "<div id=\"demo\">\n" +
+                                    "<nokia-select></nokia-select>\n" +
+                                    "</div>",
+                                script: "new Vue({\n" +
+                                    "   el:'#demo',\n" +
+                                    " });",
+                                style: '#demo {padding : 20px}',
+                                headText: "<meta charset=\"utf-8\">\n" +
+                                    "    <meta name=\"viewport\" content=\"width=device-width,initial-scale=1.0\">",
+                                links: [],
+                                scripts: [
+                                    "http://localhost:9090/open.js",
+                                ],
+                            },
+                            {
+                                id: 'cmp8',
+                                name: 'Nokia Flickity',
+                                template: "<div id=\"demo\">\n" +
+                                    "<nokia-flickity></nokia-flickity>\n" +
+                                    "</div>",
+                                script: "new Vue({\n" +
+                                    "   el:'#demo',\n" +
+                                    " });",
+                                style: '#demo {padding : 20px}',
+                                headText: "<meta charset=\"utf-8\">\n" +
+                                    "    <meta name=\"viewport\" content=\"width=device-width,initial-scale=1.0\">",
+                                links: [],
+                                scripts: [
+                                    "http://localhost:9090/open.js",
+                                ],
+                            },
+                            {
+                                id: 'cmp9',
+                                name: 'Nokia Avatar User',
+                                template: "<div id=\"demo\">\n" +
+                                    "<nokia-avatar-user :name=\"name\" \n" +
+                                    " :title=\"title\" \n" +
+                                    " :link=\"link\" \n" +
+                                    " :image=\"image\" \n" +
+                                    " :directory=\"directory\" \n" +
+                                    " :mail=\"mail\" \n" +
+                                    " :location=\"location\" \n" +
+                                    "></nokia-avatar-user>\n" +
+                                    "</div>",
+                                script: "new Vue({\n" +
+                                    "   el:'#demo',\n" +
+                                    "   data: function () {\n" +
+                                    "     return {\n" +
+                                    "       name:'Adudu'\, \n " +
+                                    "       title:'Adudu nunuku'\, \n" +
+                                    "       link:'google.com'\, \n" +
+                                    "       image:'someimage'\, \n" +
+                                    "       directory:'directory'\, \n " +
+                                    "       mail: 'somone@domain.com'\, \n" +
+                                    "       location:'hcm'\, \n" +
+                                    "     }\n" +
+                                    "   }\n" +
+                                    " });",
+                                style: '#demo {padding : 20px}',
+                                headText: "<meta charset=\"utf-8\">\n" +
+                                    "    <meta name=\"viewport\" content=\"width=device-width,initial-scale=1.0\">",
+                                links: [],
+                                scripts: [
+                                    "http://localhost:9090/open.js",
+                                ],
+                            },
+                            {
+                                id: 'cmp10',
+                                name: 'Nokia Async Table',
+                                template: "<div id=\"demo\">\n" +
+                                    "<nokia-async-table :columns=\"columns\" \n" +
+                                    " :item-per-page-modes=\"itemPerPageModes\" \n" +
+                                    " :item-per-page-mode-selected=\"itemPerPageModeSelected\" \n" +
+                                    " :url=\"url\" \n" +
+                                    "></nokia-async-table>\n" +
+                                    "</div>",
+                                script: "new Vue({\n" +
+                                    "   el:'#demo',\n" +
+                                    "   data: function () {\n" +
+                                    "     return {\n" +
+                                    "       columns:[]\, \n " +
+                                    "       itemPerPageModes:[]\, \n" +
+                                    "       itemPerPageModeSelected:'mode'\, \n" +
+                                    "       url:'url'\, \n " +
+                                    "     }\n" +
+                                    "   }\n" +
+                                    " });",
+                                style: '#demo {padding : 20px}',
+                                headText: "<meta charset=\"utf-8\">\n" +
+                                    "    <meta name=\"viewport\" content=\"width=device-width,initial-scale=1.0\">",
+                                links: [],
+                                scripts: [
+                                    "http://localhost:9090/open.js",
+                                ],
+                            },
+                            {
+                                id: 'cmp11',
+                                name: 'Nokia Confirmation Modal',
+                                template: "<div id=\"demo\">\n" +
+                                    "<nokia-confirmation-modal></nokia-confirmation-modal>\n" +
+                                    "</div>",
+                                script: "new Vue({\n" +
+                                    "   el:'#demo',\n" +
+                                    " });",
+                                style: '#demo {padding : 20px}',
+                                headText: "<meta charset=\"utf-8\">\n" +
+                                    "<meta name=\"viewport\" content=\"width=device-width,initial-scale=1.0\">",
+                                links: [],
+                                scripts: [
+                                    "http://localhost:9090/open.js",
+                                ],
+                            },
+                            {
+                                id: 'cmp12',
+                                name: 'Nokia Message Modal',
+                                template: "<div id=\"demo\">\n" +
+                                    "<message-modal></message-modal>\n" +
+                                    "</div>",
+                                script: "new Vue({\n" +
+                                    "   el:'#demo',\n" +
+                                    "   store\," +
+                                    " });",
+                                style: '#demo {padding : 20px}',
+                                headText: "<meta charset=\"utf-8\">\n" +
+                                    "<meta name=\"viewport\" content=\"width=device-width,initial-scale=1.0\">",
                                 links: [],
                                 scripts: [
                                     "http://localhost:9090/open.js",
