@@ -1,14 +1,10 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import store from './open/store';
-// import Util from './open/store/util';
 import EventBus from './open/store/busEvent';
 import jQuery from 'jquery';
+// import './open/sass/style.scss'
 Vue.use(Vuex);
-
-
-// import './open/css/style.css'
-// import './open/css/landing-page.css'
 
 import nokiaButton from './open/components/nokia-button'
 import nokiaHeader from './open/components/nokia-header'
@@ -46,5 +42,3 @@ window.exportDemoFunction = function(context){
     context.$ = jQuery;
 };
 
-console.log(jQuery);
-window.jQuery = jQuery;

@@ -9,7 +9,7 @@ import Vuex from 'vuex'
 import '@mdi/font/css/materialdesignicons.css'
 import 'vuetify/dist/vuetify.min.css'
 import 'codemirror/lib/codemirror.css'
-import './css/style.css'
+import './css/style.scss'
 import VueCodemirror from 'vue-codemirror'
 
 Vue.config.productionTip = false;

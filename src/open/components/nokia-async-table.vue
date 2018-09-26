@@ -1,4 +1,4 @@
-// vue resoucer
+// vue resource
 <template>
     <div class="oen-vue-table-wrapper">
         <div class="spinner-container" v-show="isLoadingData">
