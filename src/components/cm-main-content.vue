@@ -44,6 +44,7 @@
                     <cm-view-component-panel
                             ref="cmViewComponentPanel"
                             :component-data="componentData"
+                            :flag="true"
                     ></cm-view-component-panel>
                     <v-divider></v-divider>
                     <v-card-title></v-card-title>
@@ -84,7 +85,9 @@
                 this.isShowCode = !this.isShowCode
             },
             onSaveSetting(headText, links, scripts) {
-                console.log(headText, links, scripts)
+                this.componentData.headText=headText;
+                this.componentData.links=links;
+                this.componentData.scripts=scripts;
             }
         },
         watch: {

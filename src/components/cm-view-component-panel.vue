@@ -5,7 +5,6 @@
             width="100%"
             scrolling="no"
             frameborder="no"
-            src="http://localhost:8080"
     ></iframe>
 </template>
 
@@ -14,6 +13,7 @@
         name: "cm-view-component-panel",
         props: {
             componentData: Object,
+            flag: false,
         },
         data: function () {
             return {
@@ -95,8 +95,10 @@
                 doc.write("<!DOCTYPE html><html><head></head><body></body></html>");
                 doc.head.innerHTML=head;
                 doc.body.innerHTML = template;
-                var reRunExternalScript = 'exportDemoFunction(window); \n';
-                script = reRunExternalScript + script;
+                if( this.flag === true){
+                    var reRunExternalScript = 'exportDemoFunction(window); \n';
+                    script = reRunExternalScript + script;
+                }
                 Promise.all(this.getListLinkAndScript()).then(() => {
                     this.loadCode(doc, 'head', 'style', style);
                     this.loadCode(doc, 'body', 'script', script);
